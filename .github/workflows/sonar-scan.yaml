@@ -36,12 +36,12 @@ jobs:
       - name: Run SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+
         run: |
           sonar-scanner \
             -Dsonar.projectKey=your_project_key \
             -Dsonar.organization=your_github_org \
-            -Dsonar.host.url=https://your-sonarqube-url \
+            -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.python.version=3 \
             -Dsonar.sources=.
